@@ -3,9 +3,14 @@
   padding: 0;
   list-style: none;
   box-sizing: border-box;
+  // https://www.jianshu.com/p/04bf173826aa
+  // [Intervention] Unable to preventDefault inside passive event listener due to target being treated as passive. See <URL>
+  touch-action: pan-y;
 }
 html,
-body {
+body,
+#root,
+.App {
   height: 100%;
 }
 a {

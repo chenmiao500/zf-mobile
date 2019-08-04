@@ -34,13 +34,21 @@ class Home extends React.Component {
         selectedIcon={<i className={`iconfont ${item.icon}`} />}
         selected={this.state.selectedTab === item.path}
         onPress={() => {
-          this.setState({
-            selectedTab: item.path
-          })
           this.props.history.push(item.path)
         }}
       />
     ))
+  }
+
+  componentDidUpdate(prevProps) {
+    // console.log(prevProps, prevstates)
+    // console.log(this.props)
+    // 更新阶段不能直接调用setState的，需要有条件
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState({
+        selectedTab: this.props.location.pathname
+      })
+    }
   }
 
   render() {
